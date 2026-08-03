@@ -40,28 +40,40 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Cache para assets estaticos
+# Cache dos assets
+#
+# "immutable" so e seguro quando a URL muda a cada versao (hash no nome).
+# Nenhum arquivo aqui tem hash, entao css/js/imagem/video precisam poder ser
+# revalidados: o Netlify emite ETag forte e devolve 304 quando nada mudou.
+# Sem isso, uma correcao publicada nunca chega em quem ja visitou o site.
+
 [[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
 [[headers]]
   for = "*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+# Fonte e o unico caso em que o conteudo nunca muda para a mesma URL
+[[headers]]
+  for = "*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

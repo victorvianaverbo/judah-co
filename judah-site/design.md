@@ -75,3 +75,13 @@ Eyebrow: Geist 600 11px uppercase tracking .18em, cor --gold. Maximo 3 na pagina
 - Marquee: CSS puro, 40s, pausa hover, unico da pagina.
 - Como funciona: linha SVG via CSS animation-timeline: view() + @supports fallback.
 - prefers-reduced-motion: GSAP nem baixa; estados estaticos sao o default CSS.
+
+## Cache e publicacao
+
+`netlify.toml` serve css/js com `max-age=0, must-revalidate` (o Netlify usa ETag,
+a revalidacao devolve 304). Nada aqui tem hash no nome, entao `immutable` seria
+uma armadilha: uma correcao publicada nunca chegaria em quem ja visitou.
+
+**Ao publicar mudanca de CSS ou JS, incremente o `?v=` nos links do index.html e
+nos imports dinamicos de `script.js` / `motion/judah-motion.js`.** E o que fura o
+cache que ja esta gravado nos aparelhos.

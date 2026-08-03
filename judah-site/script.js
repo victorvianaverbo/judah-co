@@ -170,9 +170,27 @@ function initVideosDeProduto() {
   const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   let obs = null;
+  const visiveis = new Set();
+  let esperandoGesto = false;
+
+  // Safari em Modo de Baixo Consumo recusa autoplay. O primeiro toque do
+  // usuario libera: dai em diante o que estiver na tela volta a rodar.
+  const destravarNoGesto = () => {
+    if (esperandoGesto) return;
+    esperandoGesto = true;
+    const solta = () => {
+      esperandoGesto = false;
+      document.removeEventListener('touchstart', solta);
+      document.removeEventListener('click', solta);
+      visiveis.forEach((v) => v.play().catch(() => {}));
+    };
+    document.addEventListener('touchstart', solta, { once: true, passive: true });
+    document.addEventListener('click', solta, { once: true });
+  };
 
   const desliga = () => {
     if (obs) { obs.disconnect(); obs = null; }
+    visiveis.clear();
     videos.forEach((v) => v.pause());
   };
 
@@ -183,8 +201,10 @@ function initVideosDeProduto() {
       entries.forEach((e) => {
         const v = e.target;
         if (e.isIntersecting) {
-          v.play().catch(() => { /* autoplay bloqueado: poster segura a cena */ });
+          visiveis.add(v);
+          v.play().catch(destravarNoGesto);
         } else {
+          visiveis.delete(v);
           v.pause();
         }
       });
@@ -216,7 +236,7 @@ function initMotionLoader() {
     const obs = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting) return;
       obs.disconnect();
-      import('/judah-site/motion/judah-motion.js')
+      import('/judah-site/motion/judah-motion.js?v=2')
         .then((mod) => mod.initMotion())
         .catch(() => { /* CDN indisponivel: a pagina segue 100% funcional estatica */ });
     }, { rootMargin: '600px 0px' });
