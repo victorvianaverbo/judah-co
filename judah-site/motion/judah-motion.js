@@ -12,9 +12,9 @@ export async function initMotion() {
   const [{ gsap }, { ScrollTrigger }, apple, sony, dji] = await Promise.all([
     import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm'),
     import('https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm'),
-    import('/judah-site/motion/apple-pin.js?v=2'),
-    import('/judah-site/motion/sony-pan.js?v=2'),
-    import('/judah-site/motion/dji-parallax.js?v=2')
+    import('/judah-site/motion/apple-pin.js?v=3'),
+    import('/judah-site/motion/sony-pan.js?v=3'),
+    import('/judah-site/motion/dji-parallax.js?v=3')
   ]);
 
   gsap.registerPlugin(ScrollTrigger);

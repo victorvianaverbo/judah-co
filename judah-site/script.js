@@ -97,16 +97,35 @@ function initNav() {
    AOS
    ========================================== */
 
+/**
+ * Reveal proprio no lugar da biblioteca AOS.
+ *
+ * Sao 22 elementos usando um unico efeito (fade-up) e o CSS ja vive no
+ * style.css. A lib custava um request externo + 130ms de bloqueio para,
+ * no fim, so acrescentar uma classe quando o elemento aparece.
+ * Mesmas classes e mesmo resultado visual, sem dependencia.
+ */
 function initAOS() {
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 700,
-      once: true,
-      offset: 50,
-      easing: 'ease-out-cubic',
-      disableMutationObserver: true
-    });
+  const alvos = document.querySelectorAll('[data-aos]');
+  if (!alvos.length) return;
+
+  const mostra = (el) => el.classList.add('aos-animate');
+
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    alvos.forEach(mostra);
+    return;
   }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      mostra(e.target);
+      obs.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -50px 0px' });
+
+  alvos.forEach((el) => obs.observe(el));
 }
 
 /* ==========================================
@@ -230,17 +249,27 @@ function initMotionLoader() {
   const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   let armado = false;
 
-  const arma = () => {
-    if (armado || mqReduce.matches) return;
-    armado = true;
+  const observa = () => {
     const obs = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting) return;
       obs.disconnect();
-      import('/judah-site/motion/judah-motion.js?v=2')
+      import('/judah-site/motion/judah-motion.js?v=3')
         .then((mod) => mod.initMotion())
         .catch(() => { /* CDN indisponivel: a pagina segue 100% funcional estatica */ });
     }, { rootMargin: '600px 0px' });
     obs.observe(alvo);
+  };
+
+  // A margem de 600px ja alcanca a dobra Apple no primeiro calculo em
+  // telas pequenas, o que fazia o GSAP (270KB, ~500ms de avaliacao) baixar
+  // sem ninguem ter rolado nada. Esperar o primeiro scroll real resolve:
+  // quem rola recebe o GSAP com 600px de antecedencia, quem so olha o hero
+  // nao paga por ele. Nao e adiar por tempo, e reagir a intencao.
+  const arma = () => {
+    if (armado || mqReduce.matches) return;
+    armado = true;
+    if (window.scrollY > 0) { observa(); return; }
+    addEventListener('scroll', observa, { once: true, passive: true });
   };
 
   // Usuario ligou as animacoes do sistema com a pagina aberta: arma na hora.
