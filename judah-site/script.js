@@ -165,10 +165,9 @@ function initVideosDeProduto() {
   const videos = document.querySelectorAll('video[data-produto]');
   if (!videos.length) return;
 
-  // Celular de verdade (toque, sem hover) fica no poster: zero download de
-  // video no 4G. Janela estreita de desktop NAO cai nessa trava.
+  // Celular tambem toca: o custo e controlado por preload="none" + IO,
+  // entao so baixa o loop da dobra que o dedo alcancou (0,2 a 1,4MB).
   const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mqToque = window.matchMedia('(hover: none) and (pointer: coarse)');
 
   let obs = null;
 
@@ -178,7 +177,7 @@ function initVideosDeProduto() {
   };
 
   const avalia = () => {
-    if (mqReduce.matches || mqToque.matches) { desliga(); return; }
+    if (mqReduce.matches) { desliga(); return; }
     if (obs) return;
     obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => {

@@ -7,7 +7,7 @@ Regra transversal: nenhuma familia de layout se repete em dobras consecutivas.
 |---|---|---|---|---|---|---|
 | D1 | Hero | Split assimetrico 60/40 com foto full-bleed + scrim lateral | master | nenhuma de entrada (regra do framework) | stack vertical, scrim vertical | identico |
 | D2 | Marquee de marcas | Kinetic marquee (unico da pagina) | master | CSS 40s linear, pausa no hover | mantem | grid estatico centralizado |
-| D3 | Apple | Palco pinado com troca de 4 produtos | #F5F5F7 / #1D1D1F / #0071E3 | GSAP pin `start:'top top'`, `end:'+=300%'`, `scrub:0.8`, `anticipatePin:1`; progress dots | carrossel `scroll-snap` nativo | grid 2x2 estatico |
+| D3 | Apple | Palco pinado com troca de 6 produtos | #F5F5F7 / #1D1D1F / #0071E3 | GSAP pin `start:'top top'`, `end:'+=300%'`, `scrub:0.8`, `anticipatePin:1`; progress dots | pilha vertical com videos rodando | grid estatico |
 | D4 | Sony / PS5 | Horizontal-pan de 3 paineis | #08080B / #0070D1 | GSAP pan `x: -(scrollWidth-innerWidth)`, `scrub:1`, `invalidateOnRefresh`; parallax interno nos PNGs | `overflow-x:auto` + paineis empilhados | paineis empilhados |
 | D5 | DJI | Parallax de 3 camadas sem pin | gradiente #0B0B0D→#16202E | GSAP scrub: ceu -10, scrim -22, drone -38 + rotacao -4→3 | 2 camadas, drone -16 | composicao estatica |
 | D6 | Câmeras Sony | Split 6/5: janela de vídeo arredondada + texto | #0A0A0E master + hairline | vídeo em cena com IO play/pause; AOS | stack vertical, poster | poster |

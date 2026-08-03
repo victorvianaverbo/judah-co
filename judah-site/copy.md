@@ -48,8 +48,10 @@ Somente logos: Apple, Sony, PlayStation, DJI, Samsung, Xiaomi, JBL, Meta + wordm
   2. iPhone 17 Pro Max / O topo de linha absoluto.
   3. iPhone 16 Pro / Desempenho Pro, investimento menor.
   4. iPad 11ª geração / Estudo, trabalho e desenho no mesmo aparelho.
+  5. Apple Watch / O treino, o sono e o coracao no pulso.
+  6. AirPods Pro / O cancelamento de ruido que desliga o mundo.
 - CTA: Consultar no WhatsApp (azul Apple, escopado ao tile)
-- Nota de rodape do tile: Tambem trazemos Watch, AirPods, Vision e acessorios originais.
+- Nota de rodape do tile: Tambem trazemos Vision, Mac Studio e acessorios originais.
 
 ## D4. Dobra Sony / PlayStation
 

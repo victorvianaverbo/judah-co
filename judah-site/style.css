@@ -266,6 +266,8 @@ a { color: inherit; text-decoration: none; }
   isolation: isolate;
 }
 
+.hero picture { display: contents; }
+
 .hero-foto {
   position: absolute;
   inset: 0;
@@ -754,7 +756,7 @@ a { color: inherit; text-decoration: none; }
 .samsung-hero-card {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 5fr 6fr;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: clamp(24px, 4vw, 48px);
   padding: clamp(28px, 4vw, 56px);
   align-items: center;
@@ -776,6 +778,8 @@ a { color: inherit; text-decoration: none; }
   animation: aurora 18s ease-in-out infinite alternate;
 }
 
+.samsung-hero-texto { min-width: 0; }
+
 .samsung-hero-card h3 {
   font-family: "Geist", system-ui, sans-serif;
   font-weight: 600;
@@ -787,7 +791,7 @@ a { color: inherit; text-decoration: none; }
 
 .samsung-hero-card p { margin-top: 14px; }
 
-.samsung-hero-card .btn { margin-top: 28px; }
+.samsung-hero-card .btn { margin-top: 28px; position: relative; z-index: 1; }
 
 .samsung-hero-card img {
   width: 100%;
@@ -913,6 +917,25 @@ a { color: inherit; text-decoration: none; }
 }
 
 .bento-cel:hover::after { transform: translateX(120%); }
+
+/* Em touch nao existe hover: a varredura roda sozinha, escalonada por
+   celula para nao piscar tudo junto */
+@media (hover: none) {
+  .bento-cel::after {
+    animation: varrer 7s var(--ease) infinite;
+  }
+
+  .bento-cel:nth-child(2)::after { animation-delay: 0.9s; }
+  .bento-cel:nth-child(3)::after { animation-delay: 1.8s; }
+  .bento-cel:nth-child(4)::after { animation-delay: 2.7s; }
+  .bento-cel:nth-child(5)::after { animation-delay: 3.6s; }
+  .bento-cel:nth-child(6)::after { animation-delay: 4.5s; }
+}
+
+@keyframes varrer {
+  0%, 55% { transform: translateX(-120%); }
+  85%, 100% { transform: translateX(120%); }
+}
 
 .bento-cel:hover img { transform: scale(1.05); }
 
@@ -1293,7 +1316,7 @@ a { color: inherit; text-decoration: none; }
 
   .hero-grid { padding: 112px 0 72px; }
 
-  .hero-foto { object-position: 62% center; }
+  .hero-foto { object-position: center 42%; }
 
   .hero-scrim {
     background: linear-gradient(180deg, rgba(11, 11, 13, 0.82), rgba(11, 11, 13, 0.62));
@@ -1306,30 +1329,33 @@ a { color: inherit; text-decoration: none; }
 
   .tile-apple { padding: 72px 0; }
 
-  /* Apple mobile: carrossel snap nativo, sem pin */
+  /* Apple mobile: pilha vertical (horizontal escondia produto).
+     Sem card branco: o proprio fundo #F5F5F7 do tile e o do render,
+     entao o produto deixa de parecer recortado. */
   .apple-items {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 56px;
     width: auto;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding: 0 16px;
-    -webkit-overflow-scrolling: touch;
+    padding: 0;
   }
 
   .apple-item {
-    flex: 0 0 86vw;
-    scroll-snap-align: center;
-    background: #fff;
-    border-radius: var(--raio-card);
-    padding: 28px 20px 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
+  /* a largura manda no mobile: com max-height o MacBook (2400x1367)
+     estourava 462px numa tela de 390 e empurrava a nav */
   .apple-item img,
-  .apple-item video { max-height: 260px; }
+  .apple-item video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+  }
 
   /* Sony mobile: paineis empilhados */
   .painel-grid {
@@ -1378,7 +1404,10 @@ a { color: inherit; text-decoration: none; }
 
   .samsung-grid { grid-template-columns: 1fr; }
 
-  .samsung-hero-card { grid-template-columns: 1fr; }
+  .samsung-hero-card { grid-template-columns: 1fr; gap: 32px; }
+
+  /* o CTA precisa de respiro antes da foto: colado, lia como sobreposto */
+  .samsung-hero-card .btn { margin-top: 24px; margin-bottom: 8px; }
 
   .samsung-hero-card img { max-height: 300px; }
 
@@ -1463,7 +1492,7 @@ a { color: inherit; text-decoration: none; }
   .sony-painel:nth-child(-n+2)::before,
   .apple-item img { animation: none; }
 
-  .bento-cel::after { display: none; }
+  .bento-cel::after { display: none; animation: none; }
 
   @supports (animation-timeline: view()) {
     .timeline::before { animation: none; transform: none; }

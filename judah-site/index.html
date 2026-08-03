@@ -22,9 +22,13 @@
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-  <link rel="preload" as="image"
+  <link rel="preload" as="image" media="(min-width: 768px)"
         href="/.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1280&q=75"
-        imagesrcset="/.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=768&q=75 768w, /.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1280&q=75 1280w, /.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1920&q=75 1920w"
+        imagesrcset="/.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1280&q=75 1280w, /.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1920&q=75 1920w"
+        imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" media="(max-width: 767px)"
+        href="/.netlify/images?url=/images/showroom/hero-mobile.jpg&w=900&q=78"
+        imagesrcset="/.netlify/images?url=/images/showroom/hero-mobile.jpg&w=600&q=78 600w, /.netlify/images?url=/images/showroom/hero-mobile.jpg&w=900&q=78 900w, /.netlify/images?url=/images/showroom/hero-mobile.jpg&w=1200&q=78 1200w"
         imagesizes="100vw" fetchpriority="high">
 
   <link rel="stylesheet" href="/judah-site/style.css">
@@ -65,9 +69,15 @@
 
     <!-- D1. HERO -->
     <section class="hero" aria-label="Judah Imports">
-      <img class="hero-foto" src="/.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1280&q=75"
-           srcset="/.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=768&q=75 768w, /.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1280&q=75 1280w, /.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1920&q=75 1920w"
-           sizes="100vw" width="2400" height="1350" alt="iPhone Pro na mão no showroom da Judah em Belo Horizonte" loading="eager" fetchpriority="high">
+      <picture>
+        <!-- Recorte proprio para retrato: enquadra iPhone, mao e tatuagem -->
+        <source media="(max-width: 767px)"
+                srcset="/.netlify/images?url=/images/showroom/hero-mobile.jpg&w=600&q=78 600w, /.netlify/images?url=/images/showroom/hero-mobile.jpg&w=900&q=78 900w, /.netlify/images?url=/images/showroom/hero-mobile.jpg&w=1200&q=78 1200w"
+                sizes="100vw" width="1214" height="1350">
+        <img class="hero-foto" src="/.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1280&q=75"
+             srcset="/.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=768&q=75 768w, /.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1280&q=75 1280w, /.netlify/images?url=/images/showroom/hero-iphone-mao.jpg&w=1920&q=75 1920w"
+             sizes="100vw" width="2400" height="1350" alt="iPhone Pro na mão no showroom da Judah em Belo Horizonte" loading="eager" fetchpriority="high">
+      </picture>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-conteudo">
@@ -145,12 +155,24 @@
               </video>
               <figcaption><strong>iPad 11ª geração</strong><span>Estudo, trabalho e desenho no mesmo aparelho.</span></figcaption>
             </figure>
+            <figure class="apple-item" data-idx="4">
+              <video data-produto data-poster="/.netlify/images?url=/videos/apple-watch-poster.jpg&w=900&q=85" width="1080" height="1440" muted loop playsinline preload="none" aria-label="Apple Watch girando lentamente">
+                <source src="/videos/apple-watch.mp4" type="video/mp4">
+              </video>
+              <figcaption><strong>Apple Watch</strong><span>O treino, o sono e o coração no pulso.</span></figcaption>
+            </figure>
+            <figure class="apple-item" data-idx="5">
+              <video data-produto data-poster="/.netlify/images?url=/videos/apple-airpods-poster.jpg&w=1100&q=85" width="1440" height="810" muted loop playsinline preload="none" aria-label="AirPods Pro girando lentamente">
+                <source src="/videos/apple-airpods.mp4" type="video/mp4">
+              </video>
+              <figcaption><strong>AirPods Pro</strong><span>O cancelamento de ruído que desliga o mundo.</span></figcaption>
+            </figure>
           </div>
-          <div class="apple-progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+          <div class="apple-progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="container tile-foot">
           <a class="btn btn-tile" href="https://wa.me/5531998085184" data-wa-msg="Olá! Vim pelo site e quero cotar um produto Apple novo.">Consultar no WhatsApp</a>
-          <p class="caption">Também trazemos Watch, AirPods, Vision e acessórios originais.</p>
+          <p class="caption">Também trazemos Vision, Mac Studio e acessórios originais.</p>
         </div>
       </div>
     </section>

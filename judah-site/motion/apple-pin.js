@@ -25,7 +25,7 @@ export function init(gsap, ScrollTrigger) {
       scrollTrigger: {
         trigger: secao,
         start: 'top top',
-        end: '+=300%',
+        end: () => '+=' + ((itens.length - 1) * 100) + '%',
         pin: true,
         scrub: 0.8,
         anticipatePin: 1,
