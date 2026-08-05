@@ -1,5 +1,5 @@
 /**
- * Judah Imports - script principal
+ * Judah Co. - script principal
  * Nav, AOS, links de WhatsApp, tabs de seminovos e loader do motion (GSAP).
  * Regra: nenhum listener de scroll; sentinelas com IntersectionObserver.
  */
@@ -152,6 +152,24 @@ function initTabs() {
   const paineis = document.querySelectorAll('.tab-painel');
   if (!tabs.length) return;
 
+  const foto = document.getElementById('foto-seminovo');
+
+  // A foto ao lado acompanha a categoria: cada tab aponta para um
+  // registro "url|alt" em data-foto-<tab>, com crossfade curto.
+  const trocaFoto = (chave) => {
+    if (!foto) return;
+    const reg = foto.dataset['foto' + chave.charAt(0).toUpperCase() + chave.slice(1)];
+    if (!reg) return;
+    const [url, alt] = reg.split('|');
+    if (foto.getAttribute('src') === url) return;
+    foto.classList.add('trocando');
+    setTimeout(() => {
+      foto.src = url;
+      if (alt) foto.alt = alt;
+      foto.classList.remove('trocando');
+    }, 250);
+  };
+
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       tabs.forEach((t) => {
@@ -161,6 +179,7 @@ function initTabs() {
       paineis.forEach((p) => {
         p.classList.toggle('on', p.dataset.painel === tab.dataset.tab);
       });
+      trocaFoto(tab.dataset.tab);
     });
   });
 }

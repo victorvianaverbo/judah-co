@@ -1,4 +1,4 @@
-# Layout - Judah Imports
+# Layout - Judah Co.
 
 One-page, 12 dobras. Tema master dark; o tile Apple e a unica inversao clara da pagina.
 Regra transversal: nenhuma familia de layout se repete em dobras consecutivas.

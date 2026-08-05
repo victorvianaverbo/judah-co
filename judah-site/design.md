@@ -1,4 +1,4 @@
-# Design System - Judah Imports
+# Design System - Judah Co.
 
 Dials: DESIGN_VARIANCE 7 / MOTION_INTENSITY 7 / VISUAL_DENSITY 3
 Vibe: cold luxury + showroom fisico (cimento queimado, madeira, leao preto). Tema master dark unico, com UMA inversao clara deliberada (tile Apple).
@@ -85,3 +85,9 @@ uma armadilha: uma correcao publicada nunca chegaria em quem ja visitou.
 **Ao publicar mudanca de CSS ou JS, incremente o `?v=` nos links do index.html e
 nos imports dinamicos de `script.js` / `motion/judah-motion.js`.** E o que fura o
 cache que ja esta gravado nos aparelhos.
+
+## Nome publico
+
+O cliente vetou a palavra "Imports" em qualquer material publico ("todas as
+lojinhas de iPhone colocam Imports no nome"). Usar sempre **Judah Co.** em
+title, OG, schema, dominio e criativos.

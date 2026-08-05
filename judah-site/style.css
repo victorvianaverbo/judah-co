@@ -1,5 +1,5 @@
 /* ============================================================
-   JUDAH IMPORTS - Design System
+   JUDAH CO. - Design System
    Tema master dark grafite + acento dourado oficial.
    Unica inversao clara: tile Apple.
    ============================================================ */
@@ -436,6 +436,22 @@ a { color: inherit; text-decoration: none; }
 }
 
 .apple-item figcaption span { display: block; margin-top: 6px; color: #6E6E73; }
+
+/* Terceira linha do palco: cobertura de linha sem entulhar a cena */
+.apple-item figcaption .apple-familia {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: #86868B;
+  max-width: 32ch;
+  margin-inline: auto;
+}
+
+.tile-apple .apple-familia { color: #6E6E73; }
+
+/* Observacao discreta sob um bloco de texto (Xbox/Switch, Canon/Tamron) */
+.entrelinha { margin-top: 14px; opacity: 0.85; }
 
 .apple-progress { display: none; }
 
@@ -1063,13 +1079,21 @@ a { color: inherit; text-decoration: none; }
 
 .seminovos-selo { position: relative; }
 
+.seminovos-selo {
+  position: relative;
+}
+
 .seminovos-selo img {
   border-radius: var(--raio-card);
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 40%;
+  transition: opacity 0.25s var(--ease);
 }
+
+/* A foto acompanha a tab ativa: a que sai some, a que entra aparece */
+.seminovos-selo img.trocando { opacity: 0; }
 
 .selo-card {
   position: absolute;
