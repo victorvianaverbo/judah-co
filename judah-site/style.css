@@ -450,8 +450,10 @@ a { color: inherit; text-decoration: none; }
   margin-inline: auto;
 }
 
-/* Observacao discreta sob um bloco de texto (Xbox/Switch, Canon/Tamron) */
-.entrelinha { margin-top: 14px; opacity: 0.85; }
+/* Observacao discreta sob um bloco de texto (Xbox/Switch, Canon/Tamron).
+   A discricao vem do tamanho, nao de opacity: 0.85 sobre o fundo escuro
+   derrubava o texto para 4,4:1 e reprovava o AA. */
+.entrelinha { margin-top: 14px; }
 
 .apple-progress { display: none; }
 
