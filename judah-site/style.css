@@ -438,17 +438,17 @@ a { color: inherit; text-decoration: none; }
 .apple-item figcaption span { display: block; margin-top: 6px; color: #6E6E73; }
 
 /* Terceira linha do palco: cobertura de linha sem entulhar a cena */
+/* #636366 e nao o cinza padrao da Apple: em 13px sobre o parchment
+   #F5F5F7, o #86868B fica em 3,3:1 e reprova o AA */
 .apple-item figcaption .apple-familia {
   display: block;
   margin-top: 6px;
   font-size: 0.8125rem;
   line-height: 1.4;
-  color: #86868B;
+  color: #636366;
   max-width: 32ch;
   margin-inline: auto;
 }
-
-.tile-apple .apple-familia { color: #6E6E73; }
 
 /* Observacao discreta sob um bloco de texto (Xbox/Switch, Canon/Tamron) */
 .entrelinha { margin-top: 14px; opacity: 0.85; }
