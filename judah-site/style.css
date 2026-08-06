@@ -21,6 +21,41 @@
   --raio-card: 16px;
 }
 
+/* ============================================================
+   FONTES self-hosted
+   Tiradas do Google Fonts para o caminho critico: antes eram
+   CSS remoto -> woff2 remoto (dois dominios encadeados). Agora
+   saem do mesmo host, com preload no HTML.
+   Geist e variavel: um arquivo cobre 300 e 600.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url('/fonts/geist-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url('/fonts/geist-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/manrope-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ---------- Reset e base ---------- */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -337,14 +372,14 @@ a { color: inherit; text-decoration: none; }
   object-fit: contain;
 }
 
-.marquee-grupo img[src*="/sony/"],
-.marquee-grupo img[src*="/samsung/"] { height: 76px; }
+.marquee-grupo img[src$="sony.svg"],
+.marquee-grupo img[src$="samsung.svg"] { height: 76px; }
 
-.marquee-grupo img[src*="/dji/"] { height: 48px; }
+.marquee-grupo img[src$="dji.svg"] { height: 48px; }
 
-.marquee-grupo img[src*="/jbl/"] { height: 44px; }
+.marquee-grupo img[src$="jbl.svg"] { height: 44px; }
 
-.marquee-grupo img[src*="/meta/"] { height: 34px; }
+.marquee-grupo img[src$="meta.svg"] { height: 34px; }
 
 /* opacity fica no proprio token: aplicar 0.75 por cima derrubaria o
    contraste para 3.6:1, abaixo de AA */
@@ -1575,12 +1610,17 @@ a { color: inherit; text-decoration: none; }
 
   .samsung-grid { grid-template-columns: 1fr; }
 
-  .samsung-hero-card { grid-template-columns: 1fr; gap: 32px; }
+  .samsung-hero-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 20px 20px 28px;
+  }
 
   /* o CTA precisa de respiro antes da foto: colado, lia como sobreposto */
-  .samsung-hero-card .btn { margin-top: 24px; margin-bottom: 8px; }
+  .samsung-hero-card .btn { margin-top: 24px; }
 
-  .samsung-hero-card img { max-height: 300px; }
+  /* Card de produto no celular abre pela imagem, como no samsung.com */
+  .samsung-hero-card img { order: -1; max-height: 260px; }
 
   /* Celular fraco nao paga blur animado: aurora vira gradiente fixo */
   .samsung-hero-card::before {
