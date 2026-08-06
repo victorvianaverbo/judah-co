@@ -19,6 +19,8 @@ Rotulo unico de CTA primario em toda a pagina: **"Consultar no WhatsApp"**
 | CTA final | Olá! Vi o site inteiro da Judah e quero fechar uma cotação. |
 | Apple novos | Olá! Vim pelo site e quero cotar um produto Apple novo. |
 | Sony / PS5 | Olá! Vim pelo site e quero cotar PlayStation 5 ou acessórios. |
+| Xbox | Olá! Vim pelo site e quero cotar um Xbox. |
+| Nintendo | Olá! Vim pelo site e quero cotar um Nintendo Switch. |
 | Câmeras | Olá! Vim pelo site e quero cotar uma câmera ou lente. |
 | DJI | Olá! Vim pelo site e quero cotar um drone ou gimbal DJI. |
 | Samsung | Olá! Vim pelo site e quero cotar um Galaxy. |
@@ -68,23 +70,36 @@ Somente logos: Apple, Sony, PlayStation, DJI, Samsung, Xiaomi, JBL, Meta + wordm
   - Micro: Controles, headsets e acessorios originais Sony.
 - Painel 3 headline: O setup completo.
   - Micro: Pulse, Portal e um segundo DualSense pra dividir o sofá.
-  - Entrelinha: Xbox Series e Nintendo Switch também, sob encomenda.
+  (a entrelinha de Xbox/Switch saiu: cada marca ganhou dobra propria)
 - CTA: Consultar no WhatsApp (azul PlayStation, escopado ao tile)
 
-## D5. Dobra DJI
+## D5. Dobra Xbox (spotlight central, verde escopado ao tile)
+
+- Headline: Xbox Series X e S.
+- Subheadline: Potência bruta e Game Pass, lacrados e com garantia.
+- Chips: Series X / Series S / Controles
+- CTA: Consultar no WhatsApp (verde Xbox, escopado ao tile)
+
+## D6. Dobra Nintendo (split diagonal Joy-Con)
+
+- Headline: Nintendo Switch 2.
+- Subheadline: A diversão da casa inteira, nova e lacrada.
+- Chips: Switch 2 / Switch OLED / Jogos e acessórios
+- CTA: Consultar no WhatsApp (pill claro sobre os campos coloridos)
+
+## D7. Dobra DJI
 
 - Headline: Voe DJI. A Judah cuida do resto.
 - Subheadline: Avata, Mini e gimbals com orientacao de homologacao e suporte de quem voa.
 - Chips: DJI Avata / Gimbals Osmo / Cameras de acao
 - CTA: Consultar no WhatsApp
 
-## D6. Dobra Câmeras Sony (bloco criadores)
+## D8. Dobra Câmeras e lentes (multimarca, bloco criadores)
 
-- Headline: Sony pra quem cria.
-- Subheadline: Da ZV de vlog à linha Alpha, com as lentes E-mount que o seu projeto pedir.
-- Chips: ZV-E10 / Linha Alpha / Lentes E-mount
+- Headline: Câmeras e lentes pra quem cria.
+- Subheadline: Sony ZV e Alpha, Canon, e a lente Tamron ou E-mount que o seu projeto pedir.
+- Chips: ZV-E10 / Linha Alpha / Canon / Lentes Tamron
 - CTA: Consultar no WhatsApp (dourado; prefill de câmera/lente)
-- Entrelinha: Canon, Tamron e outras marcas de lente, sob encomenda.
 
 ## D7. Dobra Samsung (clara, benchmark samsung.com/br/galaxy-s24)
 

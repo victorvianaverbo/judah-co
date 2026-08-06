@@ -38,7 +38,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; height: auto; display: block; }
+/* video entra junto: sem isso o tamanho intrinseco do arquivo (1440px)
+   vira o min-content da coluna e estoura grids estreitos */
+img, video { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, p, ul, ol, figure { margin: 0; }
 
@@ -402,6 +404,9 @@ a { color: inherit; text-decoration: none; }
   gap: 48px;
 }
 
+/* min-width auto de grid item deixaria a midia inflar a coluna */
+.apple-items > * { min-width: 0; }
+
 .apple-item { text-align: center; }
 
 .apple-item img,
@@ -628,6 +633,135 @@ a { color: inherit; text-decoration: none; }
   height: auto;
   filter: drop-shadow(var(--sombra-produto));
 }
+
+/* --- D5. Xbox: spotlight central, verde escopado ao tile --- */
+
+[data-brand="xbox"] { --tile-accent: #107C10; }
+
+.tile-xbox {
+  background: #0B0F0B;
+  padding: 96px 0;
+  overflow: hidden;
+}
+
+.xbox-palco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.xbox-texto .lead { margin-top: 16px; margin-inline: auto; }
+
+.xbox-produto {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 720px);
+  margin-block: 16px;
+}
+
+.xbox-produto img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(var(--sombra-produto));
+  animation: levitar 6s ease-in-out infinite;
+}
+
+/* Halo verde pulsando atras do console */
+.xbox-halo {
+  position: absolute;
+  inset: -30%;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle, rgba(16, 124, 16, 0.55), transparent 58%),
+    radial-gradient(circle, rgba(64, 208, 64, 0.2), transparent 38%);
+  filter: blur(30px);
+  animation: halo 9s ease-in-out infinite;
+}
+
+@keyframes halo {
+  0%, 100% { opacity: 0.7; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.chips-centro { justify-content: center; }
+
+/* --- D6. Nintendo: split diagonal Joy-Con --- */
+
+.tile-nintendo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #101014;
+  padding: 96px 0;
+}
+
+/* Campos diagonais nas cores dos Joy-Cons, escurecidos o bastante
+   para o texto branco passar AA por cima */
+.nintendo-campos {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.nintendo-campos span {
+  position: absolute;
+  inset: 0;
+}
+
+.campo-vermelho {
+  background: linear-gradient(135deg, #8E0009 0%, #5C0308 46%, transparent 46.2%);
+}
+
+.campo-azul {
+  background: linear-gradient(135deg, transparent 53.8%, #04566B 54%, #073F52 100%);
+}
+
+.nintendo-grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  align-items: center;
+  gap: clamp(24px, 5vw, 56px);
+}
+
+.nintendo-texto {
+  background: rgba(11, 11, 13, 0.62);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: var(--raio-card);
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.nintendo-texto .lead { margin-top: 16px; }
+.nintendo-texto .chips { margin-top: 24px; }
+.nintendo-texto .btn { margin-top: 28px; }
+
+.nintendo-produto {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(var(--sombra-produto));
+  animation: levitar 7s ease-in-out infinite;
+}
+
+/* Janela secundaria da dobra de cameras (cena de lentes) */
+.cameras-janela-dupla {
+  display: grid;
+  gap: 16px;
+}
+
+.cameras-lentes {
+  width: 78%;
+  margin-left: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--sombra-produto);
+}
+
+.cameras-lentes img { width: 100%; height: auto; display: block; }
 
 /* --- D5. DJI --- */
 
@@ -865,7 +999,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Secoes estaticas abaixo da dobra nao pagam style/layout no load.
    As dobras com pin GSAP (apple/sony/samsung/dji) ficam de fora. */
-#cameras, #samsung, #vitrine, #seminovos, #como-funciona, #showroom {
+#xbox, #nintendo, #cameras, #samsung, #vitrine, #seminovos, #como-funciona, #showroom {
   content-visibility: auto;
   contain-intrinsic-size: auto 1000px;
 }
@@ -1424,6 +1558,17 @@ a { color: inherit; text-decoration: none; }
 
   .cameras-grid { grid-template-columns: 1fr; }
 
+  .cameras-lentes { width: 100%; margin-left: 0; }
+
+  .xbox-produto { width: min(100%, 320px); }
+
+  /* Diagonal vira split horizontal: em tela estreita a diagonal
+     cortaria o texto */
+  .campo-vermelho { background: linear-gradient(180deg, #8E0009 0%, #5C0308 48%, transparent 48.2%); }
+  .campo-azul { background: linear-gradient(180deg, transparent 51.8%, #04566B 52%, #073F52 100%); }
+
+  .nintendo-grid { grid-template-columns: 1fr; }
+
   .painel-acessorios { min-height: 0; }
 
   .painel-acessorios .acessorio-pulse { bottom: -4%; }
@@ -1516,7 +1661,10 @@ a { color: inherit; text-decoration: none; }
 
   .samsung-hero-card::before,
   .sony-painel:nth-child(-n+2)::before,
-  .apple-item img { animation: none; }
+  .apple-item img,
+  .xbox-halo,
+  .xbox-produto img,
+  .nintendo-produto { animation: none; }
 
   .bento-cel::after { display: none; animation: none; }
 

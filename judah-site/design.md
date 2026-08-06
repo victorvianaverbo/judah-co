@@ -28,9 +28,11 @@ Vermelho #D72D48 e azul #107CC4 oficiais: reservados a social media, NAO entram 
 
 | Tile | Fundo | Tinta | Acento local |
 |---|---|---|---|
-| apple | #F5F5F7 (UNICA inversao) | #1D1D1F | #0071E3 |
+| apple | #F5F5F7 (1a excecao de tema) | #1D1D1F | #0071E3 |
 | sony | #08080B | #F4F4F2 / rgba(255,255,255,.7) | #0070D1 |
 | dji | linear-gradient(#0B0B0D, #16202E) | #F4F4F2 | nenhum (foto faz a cor) |
+| xbox | #0B0F0B | #F4F4F2 | #107C10 (halo, CTA) |
+| nintendo | campos diagonais Joy-Con escurecidos (#8E0009/#5C0308 e #04566B/#073F52) sobre #101014 | #F4F4F2 sobre faixa translucida | nenhum (a cor E o fundo) |
 | samsung | #EFF0F2 claro (2a inversao, decisao do cliente; benchmark samsung.com) | #17171A / #4A4A50 | nenhum (mono; CTA pill preto #101013, cards brancos com sombra 0 12px 40px rgba(23,23,26,.08)) |
 
 ## Tipografia

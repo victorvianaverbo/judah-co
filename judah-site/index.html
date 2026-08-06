@@ -30,9 +30,9 @@
         imagesrcset="/.netlify/images?url=/images/showroom/hero-mobile.jpg&w=600&q=78 600w, /.netlify/images?url=/images/showroom/hero-mobile.jpg&w=900&q=78 900w, /.netlify/images?url=/images/showroom/hero-mobile.jpg&w=1200&q=78 1200w"
         imagesizes="100vw" fetchpriority="high">
 
-  <link rel="stylesheet" href="/judah-site/style.css?v=6">
+  <link rel="stylesheet" href="/judah-site/style.css?v=7">
 
-  <script src="/judah-site/script.js?v=6" type="module"></script>
+  <script src="/judah-site/script.js?v=7" type="module"></script>
 </head>
 <body>
 
@@ -47,7 +47,7 @@
       </a>
       <nav class="nav-links" id="nav-menu" aria-label="Seções">
         <a href="#apple">Apple</a>
-        <a href="#sony">PlayStation</a>
+        <a href="#sony">Games</a>
         <a href="#dji">DJI</a>
         <a href="#samsung">Samsung</a>
         <a href="#seminovos">Seminovos</a>
@@ -213,7 +213,6 @@
               <div class="painel-texto">
                 <h3 class="display-air">O setup completo.</h3>
                 <p class="lead">Pulse, Portal e um segundo DualSense pra dividir o sofá.</p>
-                <p class="caption entrelinha">Xbox Series e Nintendo Switch também, sob encomenda.</p>
               </div>
               <div class="painel-acessorios" aria-hidden="false">
                 <img class="acessorio-portal" src="/.netlify/images?url=/images/sony/portal.png&w=900&q=85" width="1600" height="585" alt="PlayStation Portal" loading="lazy">
@@ -222,6 +221,47 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- D5. XBOX (spotlight central; verde escopado ao tile) -->
+    <section class="tile tile-xbox" id="xbox" data-brand="xbox">
+      <div class="container xbox-palco">
+        <div class="xbox-texto">
+          <h2 class="display-air">Xbox Series X e S.</h2>
+          <p class="lead">Potência bruta e Game Pass, lacrados e com garantia.</p>
+        </div>
+        <div class="xbox-produto" data-aos="fade-up">
+          <div class="xbox-halo" aria-hidden="true"></div>
+          <img src="/.netlify/images?url=/images/xbox/series-x.png&w=1000&q=85" width="2000" height="1145" alt="Console Xbox Series X" loading="lazy">
+        </div>
+        <ul class="chips chips-centro" role="list">
+          <li>Series X</li>
+          <li>Series S</li>
+          <li>Controles</li>
+        </ul>
+        <a class="btn btn-tile" href="https://wa.me/5531998085184" data-wa-msg="Olá! Vim pelo site e quero cotar um Xbox.">Consultar no WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- D6. NINTENDO (split diagonal Joy-Con; cores escopadas ao tile) -->
+    <section class="tile tile-nintendo" id="nintendo" data-brand="nintendo">
+      <div class="nintendo-campos" aria-hidden="true">
+        <span class="campo-vermelho"></span>
+        <span class="campo-azul"></span>
+      </div>
+      <div class="container nintendo-grid">
+        <div class="nintendo-texto">
+          <h2 class="display-air">Nintendo Switch 2.</h2>
+          <p class="lead">A diversão da casa inteira, nova e lacrada.</p>
+          <ul class="chips" role="list">
+            <li>Switch 2</li>
+            <li>Switch OLED</li>
+            <li>Jogos e acessórios</li>
+          </ul>
+          <a class="btn btn-claro" href="https://wa.me/5531998085184" data-wa-msg="Olá! Vim pelo site e quero cotar um Nintendo Switch.">Consultar no WhatsApp</a>
+        </div>
+        <img class="nintendo-produto" src="/.netlify/images?url=/images/nintendo/switch.png&w=1000&q=85" width="2000" height="956" alt="Nintendo Switch com Joy-Cons" loading="lazy" data-aos="fade-up">
       </div>
     </section>
 
@@ -246,21 +286,26 @@
     <!-- D6. CAMERAS SONY (bloco criadores, na sequencia da DJI) -->
     <section class="tile tile-cameras" id="cameras">
       <div class="container cameras-grid">
-        <div class="cameras-janela" data-aos="fade-up">
-          <video data-produto data-poster="/.netlify/images?url=/videos/sony-zv-poster.jpg&w=1100&q=85" width="1440" height="810" muted loop playsinline preload="none" aria-label="Câmera Sony ZV-E10 em mesa de estúdio de criador de conteúdo">
-            <source src="/videos/sony-zv.mp4" type="video/mp4">
-          </video>
+        <div class="cameras-janela-dupla">
+          <div class="cameras-janela" data-aos="fade-up">
+            <video data-produto data-poster="/.netlify/images?url=/videos/sony-zv-poster.jpg&w=1100&q=85" width="1440" height="810" muted loop playsinline preload="none" aria-label="Câmera Sony ZV-E10 em mesa de estúdio de criador de conteúdo">
+              <source src="/videos/sony-zv.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="cameras-lentes" data-aos="fade-up" data-aos-delay="120">
+            <img src="/.netlify/images?url=/images/sony/lentes.jpg&w=900&q=80" width="2336" height="1744" alt="Três lentes profissionais sobre bancada de ardósia com luz dourada" loading="lazy">
+          </div>
         </div>
         <div class="cameras-texto">
-          <h2 class="display-air">Sony pra quem cria.</h2>
-          <p class="lead">Da ZV de vlog à linha Alpha, com as lentes E-mount que o seu projeto pedir.</p>
+          <h2 class="display-air">Câmeras e lentes pra quem cria.</h2>
+          <p class="lead">Sony ZV e Alpha, Canon, e a lente Tamron ou E-mount que o seu projeto pedir.</p>
           <ul class="chips" role="list">
             <li>ZV-E10</li>
             <li>Linha Alpha</li>
-            <li>Lentes E-mount</li>
+            <li>Canon</li>
+            <li>Lentes Tamron</li>
           </ul>
           <a class="btn btn-gold" href="https://wa.me/5531998085184" data-wa-msg="Olá! Vim pelo site e quero cotar uma câmera ou lente.">Consultar no WhatsApp</a>
-          <p class="caption entrelinha">Canon, Tamron e outras marcas de lente, sob encomenda.</p>
         </div>
       </div>
     </section>
@@ -508,7 +553,7 @@
       </div>
       <nav class="footer-links" aria-label="Mapa do site">
         <a href="#apple">Apple</a>
-        <a href="#sony">PlayStation</a>
+        <a href="#sony">Games</a>
         <a href="#dji">DJI</a>
         <a href="#samsung">Samsung</a>
         <a href="#vitrine">Vitrine</a>
