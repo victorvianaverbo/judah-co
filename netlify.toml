@@ -26,12 +26,6 @@
   status = 200
   force = true
 
-# Cache para videos
-[[headers]]
-  for = "/videos/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
 # Headers de seguranca
 [[headers]]
   for = "/*"

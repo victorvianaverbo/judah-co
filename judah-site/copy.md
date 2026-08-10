@@ -141,7 +141,7 @@ Somente logos: Apple, Sony, PlayStation, DJI, Samsung, Xiaomi, JBL, Meta + wordm
 ## D9. Como funciona
 
 - Eyebrow: COMO FUNCIONA
-- Headline: Comprar importado sem susto.
+- Headline: Compre importado sem surpresas.
 - Passos (titulo + linha):
   1. Voce chama no WhatsApp / Cotacao na hora, no dolar do dia.
   2. Fechamos com contrato / Validacao juridica. Tributos, taxas e seguro por nossa conta.
@@ -152,7 +152,8 @@ Somente logos: Apple, Sony, PlayStation, DJI, Samsung, Xiaomi, JBL, Meta + wordm
 ## D10. Por dentro da Judah (prova de operacao, SEM convite de visita)
 
 - Headline: Por dentro da Judah.
-- Subheadline: Operacao enxuta de proposito: estoque minimo, encomenda com contrato e entrega em maos.
+- Subheadline: Estoque selecionado e encomenda sob demanda, com contrato e acompanhamento ate a entrega.
+  (o cliente vetou "enxuta": passava ideia de pouco profissional)
 - MOTIVO: o cliente NAO quer demanda de visita (estoque minimo por seguranca, so mostruario, trabalha por encomenda).
 - Bloco Instagram: Acompanhe os unboxings no @judahcompany_
 - CTA: Consultar no WhatsApp (prefill geral de cotacao; a mensagem de visita foi removida)
