@@ -1,6 +1,20 @@
 [build]
   publish = "."
 
+# Minificacao no deploy: o fonte fica legivel com os comentarios que
+# documentam as decisoes, e o Netlify entrega a versao enxuta. Evita
+# manter um .min a parte, que dessincroniza na primeira edicao esquecida.
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = false
+  minify = true
+
+[build.processing.js]
+  bundle = false
+  minify = true
+
 [dev]
   publish = "."
   port = 8888

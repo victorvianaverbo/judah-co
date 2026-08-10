@@ -154,20 +154,49 @@ function initTabs() {
 
   const foto = document.getElementById('foto-seminovo');
 
+  const registro = (chave) => foto && foto.dataset['foto' + chave.charAt(0).toUpperCase() + chave.slice(1)];
+
+  // As fotos das outras abas entram em cache assim que a secao se aproxima.
+  // Sem isso, o download so comecava no clique e a troca demorava.
+  if (foto && 'IntersectionObserver' in window) {
+    const secao = foto.closest('section') || foto;
+    const obs = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+      [...tabs].forEach((t) => {
+        const reg = registro(t.dataset.tab);
+        if (reg) new Image().src = reg.split('|')[0];
+      });
+    }, { rootMargin: '1600px 0px' });
+    obs.observe(secao);
+  }
+
   // A foto ao lado acompanha a categoria: cada tab aponta para um
   // registro "url|alt" em data-foto-<tab>, com crossfade curto.
+  //
+  // A troca espera duas coisas em PARALELO: o fade-out terminar e a nova
+  // imagem estar decodificada. Antes, o src so era trocado depois dos 250ms
+  // e o download comecava ali, somando espera em cima de espera.
   const trocaFoto = (chave) => {
     if (!foto) return;
-    const reg = foto.dataset['foto' + chave.charAt(0).toUpperCase() + chave.slice(1)];
+    const reg = registro(chave);
     if (!reg) return;
     const [url, alt] = reg.split('|');
     if (foto.getAttribute('src') === url) return;
+
+    const proxima = new Image();
+    proxima.src = url;
+
     foto.classList.add('trocando');
-    setTimeout(() => {
+
+    const pronta = proxima.decode ? proxima.decode().catch(() => {}) : Promise.resolve();
+    const fade = new Promise((r) => setTimeout(r, 160));
+
+    Promise.all([pronta, fade]).then(() => {
       foto.src = url;
       if (alt) foto.alt = alt;
       foto.classList.remove('trocando');
-    }, 250);
+    });
   };
 
   tabs.forEach((tab) => {
