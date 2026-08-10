@@ -1,19 +1,11 @@
 [build]
   publish = "."
-
-# Minificacao no deploy: o fonte fica legivel com os comentarios que
-# documentam as decisoes, e o Netlify entrega a versao enxuta. Evita
-# manter um .min a parte, que dessincroniza na primeira edicao esquecida.
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = false
-  minify = true
-
-[build.processing.js]
-  bundle = false
-  minify = true
+  # Minifica no servidor de build, sobre a copia do repo: o fonte versionado
+  # continua legivel com os comentarios que documentam as decisoes, e o que
+  # vai ao ar e enxuto. Evita um .min a parte, que dessincronizaria na
+  # primeira edicao esquecida. O "|| true" garante que uma falha do npx
+  # nunca derrube o deploy: no pior caso publica o CSS nao minificado.
+  command = "npx --yes clean-css-cli@5 -o judah-site/style.css judah-site/style.css || true"
 
 [dev]
   publish = "."
